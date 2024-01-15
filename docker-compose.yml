@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+
+  mariadb:
+    image: mariadb
+    container_name: db_mariadb_course
+    environment:
+      - MYSQL_ROOT_PASSWORD=12345
+      - MYSQL_USER=course
+      - MYSQL_DATABASE=course
+      - MYSQL_PASSWORD=12345
+    ports:
+      - 9826:3306
+    volumes:
+      - mariadb_data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: db_phpmyadmin_course
+    environment:
+      - PMA_HOST=db_mariadb_course
+      - UPLOAD_LIMIT=5242880000
+    ports:
+      - 9825:80
+  redis:
+    image: 'redis:latest'
+    ports:
+      - '6379:6379'
+
+volumes:
+  mariadb_data:
+  postgres_data:
