@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\TurboSms;
+namespace App\Repositories\TurboSms;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
